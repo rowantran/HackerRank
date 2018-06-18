@@ -9,7 +9,9 @@ import java.util.regex.*;
 public class Solution {
 
     // Complete the taumBday function below.
-    static int taumBday(int b, int w, int bc, int wc, int z) {
+    static long taumBday(long b, long w, long bc, long wc, long z) {
+
+
         if (bc + z < wc) {
             return (b*bc) + (w*(bc+z));
         } else if (wc + z < bc) {
@@ -24,25 +26,25 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int t = scanner.nextInt();
+        long t = scanner.nextLong();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        for (int tItr = 0; tItr < t; tItr++) {
+        for (long tItr = 0; tItr < t; tItr++) {
             String[] bw = scanner.nextLine().split(" ");
 
-            int b = Integer.parseInt(bw[0]);
+            long b = Long.parseLong(bw[0]);
 
-            int w = Integer.parseInt(bw[1]);
+            long w = Long.parseLong(bw[1]);
 
             String[] bcWcz = scanner.nextLine().split(" ");
 
-            int bc = Integer.parseInt(bcWcz[0]);
+            long bc = Long.parseLong(bcWcz[0]);
 
-            int wc = Integer.parseInt(bcWcz[1]);
+            long wc = Long.parseLong(bcWcz[1]);
 
-            int z = Integer.parseInt(bcWcz[2]);
+            long z = Long.parseLong(bcWcz[2]);
 
-            int result = taumBday(b, w, bc, wc, z);
+            long result = taumBday(b, w, bc, wc, z);
 
             bufferedWriter.write(String.valueOf(result));
             bufferedWriter.newLine();
