@@ -11,25 +11,27 @@ public class Solution {
     // Complete the howManyGames function below.
     static int howManyGames(int p, int d, int m, int s) {
         int balance = s;
-        int currentCost = p;
         int gamesBought = 0;
 
-        while (s >= m) {
-            if (s > currentCost) {
-                s -= currentCost;
-                gamesBought++;
-
-                if (currentCost > m) {
-                    currentCost -= d;
-                }
-
-                if (currentCost < m) {
-                    currentCost = m;
-                }
-            }
+        while (balance >= gameCost(gamesBought, p, d, m)) {
+            balance -= gameCost(gamesBought, p, d, m);
+            gamesBought++;
         }
 
         return gamesBought;
+    }
+
+    static int gameCost(int n, int p, int d, int m) {
+        if (n == 0) {
+            return p;
+        } else {
+            int testCost = gameCost(n-1, p, d, m) - d;
+            if (testCost >= m) {
+                return testCost;
+            } else {
+                return m;
+            }
+        }
     }
 
     private static final Scanner scanner = new Scanner(System.in);
