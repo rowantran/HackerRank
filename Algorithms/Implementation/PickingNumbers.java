@@ -12,9 +12,9 @@ public class Solution {
     static int pickingNumbers(int[] a) {
         int maxCount = 0;
         for (int i = 0; i < a.length; i++) {
-            int count = 0;
+            int count = 1;
             for (int j = 0; j < a.length; j++) {
-                if (i != j && Math.abs(a[i] - a[j]) <= 1) {
+                if (i != j && (a[j] == a[i] + 1 || a[j] == a[i])) {
                     count++;
                 }
             }
@@ -24,7 +24,11 @@ public class Solution {
             }
         }
 
-        return maxCount;
+        if (maxCount < 2) {
+            return 2;
+        } else {
+            return maxCount;
+        }
     }
 
     private static final Scanner scanner = new Scanner(System.in);
@@ -41,7 +45,7 @@ public class Solution {
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
         for (int i = 0; i < n; i++) {
-            int aItem = Integer.parseInt(aItems[i]);
+            int aItem = Integer.parseInt(aItems [i]);
             a[i] = aItem;
         }
 
